@@ -1,0 +1,6 @@
+/target/
+/test-output/
+/target/*
+/test-output/*
+target/*
+/target

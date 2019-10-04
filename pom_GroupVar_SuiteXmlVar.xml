@@ -1,0 +1,37 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.vinit.automation</groupId>
+  <artifactId>MavenPOC</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+    <dependencies>
+  		<dependency>
+			<groupId>org.testng</groupId>
+			<artifactId>testng</artifactId>
+			<version>6.14.3</version>
+		</dependency>
+	</dependencies>
+	
+	<properties>
+		<groups>smoke,regression</groups>
+		<suiteXmlFile>suite/group.xml</suiteXmlFile>
+		<maven-surefire-plugin.version>2.21.0</maven-surefire-plugin.version>
+	</properties>
+	
+	 <build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>${maven-surefire-plugin.version}</version>
+	<!--  This pom.xml depicts configuration tag for groups, here we are taking group as variable, when we execute for smoke, it will only execute smoke testcases in all the classes present under src/test/java 
+	This can be used in the jenkins configuration, in which we can use the same job by passing the group name and suiteXmlFile in parameters.-->
+                <configuration>	
+                	<groups>${groups}</groups>
+                	<suiteXmlFiles>
+	                	<suiteXmlFile>${suiteXmlFile}</suiteXmlFile>
+                	</suiteXmlFiles>
+                </configuration>
+			</plugin>
+		</plugins>
+	</build>
+</project>
